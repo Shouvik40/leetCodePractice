@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  </head>
+  <body>
+    <script>
+      function breakStr(word, str1, str2) {
+        if (word.length === 0) return true;
+        if (word.indexOf(str1) === -1 && word.indexOf(str2) === -1)
+          return false;
+        let ans = false;
+        if (word.indexOf(str1) === 0) {
+          let word1 = word.slice(str1.length);
+          ans = breakStr(word1, str1, str2);
+        }
+        if (word.indexOf(str2) === 0) {
+          word.slice(str2.length);
+          let word1 = word.slice(str1.length);
+          ans = breakStr(word1, str1, str2);
+        }
+        return ans;
+      }
+
+      let result = breakStr("leetleet", "leet");
+      console.log(result);
+      console.log(word.indexOf("leer"));
+    </script>
+  </body>
+</html>
