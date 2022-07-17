@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  </head>
+  <body>
+    <script>
+      function countPermutationsOfPrime(arr) {
+        let mainArr = isPrimeArr(arr);
+        let count = 1;
+        let finalCount = 0;
+        for (let i = 1; i <= mainArr.length; i++) {
+          finalCount += fact(mainArr.length) / fact(mainArr.length - i);
+        }
+        return finalCount;
+      }
+
+      function factorial(i) {
+        let count = 1;
+        for (let j = i; j > 0; j--) {
+          count *= j;
+        }
+        return count;
+      }
+
+      function nCr(n, r) {
+        return fact(n) / (fact(r) * fact(n - r));
+      }
+
+      function fact(n) {
+        var res = 1;
+        for (var i = 2; i <= n; i++) res = res * i;
+        return res;
+      }
+
+      function isPrimeArr(arr) {
+        let mainArr = [];
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 1; j <= arr[i]; j++) {
+            if (arr[i] % j === 0) {
+              count += 1;
+            }
+          }
+          if (count === 2) {
+            mainArr.push(arr[i]);
+          }
+          count = 0;
+        }
+        return mainArr;
+      }
+      let result = countPermutationsOfPrime([2, 3, 5, 9, 12, 14]);
+      console.log(result);
+    </script>
+  </body>
+</html>
